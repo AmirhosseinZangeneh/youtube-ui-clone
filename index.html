@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A responsive YouTube-inspired video feed built for educational purposes.">
+  <meta name="theme-color" content="#0f0f0f">
+  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="style/header.css">
+  <link rel="stylesheet" href="style/sidebar.css">
+  <link rel="stylesheet" href="style/content.css">
+  <title>YouTube UI Clone | HTML, CSS &amp; JavaScript</title>
+</head>
+
+<body>
+  <div class="initial-loader" id="initialLoader" role="status" aria-live="polite">
+    <div class="loader" aria-hidden="true"></div>
+    <span class="sr-only">Loading videos...</span>
+  </div>
+
+  <header class="site-header">
+    <div class="header-left">
+      <button class="icon-button menu-button" id="menuToggle" type="button" aria-label="Toggle navigation"
+        aria-controls="sidebar" aria-expanded="false">
+        <img class="header-icon" src="header-pictures/hamburger-menu.svg" alt="" width="24" height="24">
+      </button>
+      <a class="youtube-brand" href="index.html" aria-label="YouTube clone home">
+        <span class="youtube-mark" aria-hidden="true">
+          <svg viewBox="0 0 29 20" focusable="false">
+            <rect width="29" height="20" rx="5" fill="#ff0000"></rect>
+            <path d="m11.4 14.3 7.45-4.3-7.45-4.3z" fill="#fff"></path>
+          </svg>
+        </span>
+        <span class="youtube-wordmark">YouTube</span>
+      </a>
+      <button id="themeToggle" class="icon-button theme-button" type="button" aria-label="Change color theme">
+        <svg class="theme-icon" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="header-middle">
+      <form class="search-form" id="searchForm" role="search">
+        <label class="sr-only" for="searchInput">Search videos</label>
+        <input id="searchInput" class="search-input" type="search" placeholder="Search" autocomplete="off">
+        <button class="search-button icon-button" type="submit" aria-label="Search videos">
+          <img class="header-icon" src="header-pictures/search.svg" alt="" width="22" height="22">
+        </button>
+      </form>
+      <button class="icon-button voice-button" id="voiceButton" type="button" aria-label="Voice search">
+        <img class="header-icon" src="header-pictures/voice-search-icon.svg" alt="" width="23" height="23">
+      </button>
+    </div>
+
+    <div class="header-right" aria-label="Account actions">
+      <button class="icon-button header-action" type="button" data-action="Upload" aria-label="Upload video">
+        <img class="header-icon" src="header-pictures/upload.svg" alt="" width="23" height="23">
+      </button>
+      <button class="icon-button header-action" type="button" data-action="YouTube apps" aria-label="YouTube apps">
+        <img class="header-icon" src="header-pictures/youtube-apps.svg" alt="" width="23" height="23">
+      </button>
+      <button class="icon-button header-action" type="button" data-action="Notifications" aria-label="Notifications">
+        <img class="header-icon" src="header-pictures/notifications.svg" alt="" width="23" height="23">
+      </button>
+      <img class="current-user-picture" src="header-pictures/unnamed.jpg" alt="User profile" width="32" height="32">
+    </div>
+  </header>
+
+  <aside class="sidebar" id="sidebar">
+    <nav class="sidebar-nav" aria-label="Primary navigation">
+      <a class="sidebar-link is-active" href="#" data-section="Home" aria-current="page">
+        <img class="sidebar-icon" src="sidebar-pictures/home.svg" alt="" width="24" height="24">
+        <span>Home</span>
+      </a>
+      <a class="sidebar-link" href="#" data-section="Explore">
+        <img class="sidebar-icon" src="sidebar-pictures/explore.svg" alt="" width="24" height="24">
+        <span>Explore</span>
+      </a>
+      <a class="sidebar-link" href="#" data-section="Subscriptions">
+        <img class="sidebar-icon" src="sidebar-pictures/subscriptions.svg" alt="" width="24" height="24">
+        <span>Subscriptions</span>
+      </a>
+      <a class="sidebar-link" href="#" data-section="Originals">
+        <img class="sidebar-icon" src="sidebar-pictures/originals.svg" alt="" width="24" height="24">
+        <span>Originals</span>
+      </a>
+      <a class="sidebar-link" href="#" data-section="Music">
+        <img class="sidebar-icon" src="sidebar-pictures/youtube-music.svg" alt="" width="24" height="24">
+        <span>Music</span>
+      </a>
+      <a class="sidebar-link" href="#" data-section="Library">
+        <img class="sidebar-icon" src="sidebar-pictures/library.svg" alt="" width="24" height="24">
+        <span>Library</span>
+      </a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <section class="video-grid is-loading" id="videoGrid" aria-label="Recommended videos" aria-live="polite" aria-busy="true">
+      <article class="skeleton-card" aria-hidden="true">
+        <div class="skeleton-thumbnail"></div>
+        <div class="skeleton-details">
+          <div class="skeleton-avatar"></div>
+          <div class="skeleton-lines">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </article>
+      <article class="skeleton-card" aria-hidden="true">
+        <div class="skeleton-thumbnail"></div>
+        <div class="skeleton-details">
+          <div class="skeleton-avatar"></div>
+          <div class="skeleton-lines">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </article>
+      <article class="skeleton-card" aria-hidden="true">
+        <div class="skeleton-thumbnail"></div>
+        <div class="skeleton-details">
+          <div class="skeleton-avatar"></div>
+          <div class="skeleton-lines">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </article>
+      <article class="skeleton-card" aria-hidden="true">
+        <div class="skeleton-thumbnail"></div>
+        <div class="skeleton-details">
+          <div class="skeleton-avatar"></div>
+          <div class="skeleton-lines">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </article>
+      <article class="skeleton-card" aria-hidden="true">
+        <div class="skeleton-thumbnail"></div>
+        <div class="skeleton-details">
+          <div class="skeleton-avatar"></div>
+          <div class="skeleton-lines">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </article>
+      <article class="skeleton-card" aria-hidden="true">
+        <div class="skeleton-thumbnail"></div>
+        <div class="skeleton-details">
+          <div class="skeleton-avatar"></div>
+          <div class="skeleton-lines">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </article>
+    </section>
+    <p class="empty-state" id="emptyState" hidden>No videos match your search.</p>
+  </main>
+
+  <dialog class="video-dialog" id="videoDialog" aria-labelledby="dialogTitle">
+    <div class="dialog-content">
+      <button class="dialog-close icon-button" id="dialogClose" type="button" aria-label="Close video details">&times;</button>
+      <p class="dialog-kicker">Video preview</p>
+      <h2 id="dialogTitle"></h2>
+      <p id="dialogChannel" class="dialog-channel"></p>
+      <p id="dialogDescription" class="dialog-description"></p>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <noscript>
+    <style>
+      .initial-loader { display: none; }
+    </style>
+    <p class="noscript-message">Please enable JavaScript to use this interactive demo.</p>
+  </noscript>
+
+  <script src="themes.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+
+</html>
